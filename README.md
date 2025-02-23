@@ -2,7 +2,7 @@
 
 A Flask web application that generates interactive maps showing estimated travel times from a given location. Available in two versions:
 
-1. **Basic Version** (`map-generator.py`): Uses simple circular rings to estimate travel times based on straight-line distance
+1. **Basic Version** (`map-generator.py`): Uses simple circle for visualization 
 2. **API Version** (`map-generator-apiheat.py`): Uses OpenRouteService API to calculate realistic drive times based on actual road networks
 
 ![Travel Time Map Example](static/map.png)
@@ -10,14 +10,12 @@ A Flask web application that generates interactive maps showing estimated travel
 ## Versions
 
 ### Basic Version (map-generator.py)
-- Uses geometric circles to estimate travel times
+- Basic circle distance
 - No API key required
-- Simple distance-based calculations
 - Faster execution
-- Suitable for rough estimates and prototyping
 
 ### API Version (map-generator-apiheat.py)
-- Uses OpenRouteService API for realistic drive times
+- Uses OpenRouteService API for drive times
 - Requires API key
 - Takes into account actual road networks
 - More accurate results
@@ -28,9 +26,9 @@ A Flask web application that generates interactive maps showing estimated travel
 Common features in both versions:
 - Generate travel time maps based on zip code or city/state
 - Visualize estimated travel times from 10 to 60 minutes
-- Color-coded zones for easy interpretation
-- Interactive map with zoom and pan capabilities
-- Mobile-responsive design
+- Color-coded zones 
+- Interactive map
+
 
 ## Prerequisites
 
@@ -114,14 +112,6 @@ The application uses several key technologies:
 The free tier of OpenRouteService API has the following limits:
 - 40 requests per minute
 - 2000 requests per day
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ## License
 
