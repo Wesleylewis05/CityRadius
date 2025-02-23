@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Radius Map</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-2xl">
+        <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">City Radius Map</h1>
+        <form method="POST" class="space-y-5">
+            <div>
+                <label for="zip_code" class="block text-gray-700 font-medium mb-2">
+                    Zip Code (Optional)
+                </label>
+                <input type="text" id="zip_code" name="zip_code" placeholder="e.g., 22554"
+                       class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+
+            <div>
+                <label for="city_state" class="block text-gray-700 font-medium mb-2">
+                    City and State (If no Zip Code)
+                </label>
+                <input type="text" id="city_state" name="city_state" placeholder="e.g., Stafford VA"
+                       class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            </div>
+
+            <div>
+                <label for="radius" class="block text-gray-700 font-medium mb-2">
+                    Radius (miles)
+                </label>
+                <input type="number" id="radius" name="radius" min="1" max="1000" placeholder="Enter radius"
+                       class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" required>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                Generate Map
+            </button>
+        </form>
+
+        {% if error %}
+            <p class="text-red-500 text-center mt-4">{{ error }}</p>
+        {% endif %}
+
+        {% if map_file %}
+            <div class="mt-6">
+                <h2 class="text-2xl font-semibold text-center text-gray-700 mb-4">
+                    Generated Map
+                </h2>
+                <div class="rounded-lg overflow-hidden shadow-lg border">
+                    <!-- Increase the iframe size to make the map appear larger -->
+                    <iframe
+                        src="{{ url_for('static', filename='city_map_with_radius.html') }}"
+                        width="100%"
+                        height="900"
+                        style="border: none;">
+                    </iframe>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
